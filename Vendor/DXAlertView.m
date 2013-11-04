@@ -59,13 +59,15 @@
    rightButtonTitle:(NSString *)rigthTitle
 {
     if (self = [super init]) {
+        self.layer.cornerRadius = 5.0;
         self.backgroundColor = [UIColor whiteColor];
         self.alertTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kTitleYOffset, kAlertWidth, kTitleHeight)];
         self.alertTitleLabel.font = [UIFont boldSystemFontOfSize:20.0f];
         self.alertTitleLabel.textColor = [UIColor colorWithRed:56.0/255.0 green:64.0/255.0 blue:71.0/255.0 alpha:1];
         [self addSubview:self.alertTitleLabel];
         
-        self.alertContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(kContentOffset, CGRectGetMaxY(self.alertTitleLabel.frame), kAlertWidth - 2 * kBetweenLabelOffset, 60)];
+        CGFloat contentLabelWidth = kAlertWidth - 16;
+        self.alertContentLabel = [[UILabel alloc] initWithFrame:CGRectMake((kAlertWidth - contentLabelWidth) * 0.5, CGRectGetMaxY(self.alertTitleLabel.frame), contentLabelWidth, 60)];
         self.alertContentLabel.numberOfLines = 0;
         self.alertContentLabel.textAlignment = self.alertTitleLabel.textAlignment = NSTextAlignmentCenter;
         self.alertContentLabel.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1];
@@ -92,8 +94,8 @@
             self.rightBtn.frame = rightBtnFrame;
         }
         
-        [self.rightBtn setBackgroundColor:[UIColor colorWithRed:80.0/255.0 green:223.0/255.0 blue:145.0/255.0 alpha:1]];
-        [self.leftBtn setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:61.0/255.0 blue:92.0/255.0 alpha:1]];
+        [self.rightBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:87.0/255.0 green:135.0/255.0 blue:173.0/255.0 alpha:1]] forState:UIControlStateNormal];
+        [self.leftBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:227.0/255.0 green:100.0/255.0 blue:83.0/255.0 alpha:1]] forState:UIControlStateNormal];
         [self.rightBtn setTitle:rigthTitle forState:UIControlStateNormal];
         [self.leftBtn setTitle:leftTitle forState:UIControlStateNormal];
         self.leftBtn.titleLabel.font = self.rightBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -102,7 +104,8 @@
         
         [self.leftBtn addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.rightBtn addTarget:self action:@selector(rightBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        
+        self.leftBtn.layer.masksToBounds = self.rightBtn.layer.masksToBounds = YES;
+        self.leftBtn.layer.cornerRadius = self.rightBtn.layer.cornerRadius = 3.0;
         [self addSubview:self.leftBtn];
         [self addSubview:self.rightBtn];
         
@@ -137,7 +140,7 @@
     }
 }
 
-- (void)showAlert
+- (void)show
 {
     UIWindow *shareWindow = [UIApplication sharedApplication].keyWindow;
     self.frame = CGRectMake((CGRectGetWidth(shareWindow.bounds) - kAlertWidth) * 0.5, - kAlertHeight - 30, kAlertWidth, kAlertHeight);
@@ -192,6 +195,25 @@
     } completion:^(BOOL finished) {
     }];
     [super willMoveToSuperview:newSuperview];
+}
+
+@end
+
+@implementation UIImage (colorful)
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

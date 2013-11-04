@@ -46,7 +46,7 @@
 - (void)twoBtnClicked:(id)sender
 {
     DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"Congratulations" contentText:@"You have bought something" leftButtonTitle:@"Ok" rightButtonTitle:@"Fine"];
-    [alert showAlert];
+    [alert show];
     alert.leftBlock = ^() {
         NSLog(@"left button clicked");
     };
@@ -61,7 +61,7 @@
 - (void)OneBtnClicked:(id)sender
 {
     DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"Congratulations" contentText:@"You have bought something" leftButtonTitle:nil rightButtonTitle:@"Fine"];
-    [alert showAlert];
+    [alert show];
     alert.rightBlock = ^() {
         NSLog(@"right button clicked");
     };

@@ -17,11 +17,11 @@
 		6251EE3217E1C33A0066B37D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE3117E1C33A0066B37D /* Default@2x.png */; };
 		6251EE3417E1C33A0066B37D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE3317E1C33A0066B37D /* Default-568h@2x.png */; };
 		6251EE3C17E1C3510066B37D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6251EE3B17E1C3510066B37D /* MainViewController.m */; };
-		6251EE4317E1C3DD0066B37D /* DXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6251EE4217E1C3DD0066B37D /* DXAlertView.m */; };
 		6251EE4817E1C4460066B37D /* btn_close_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE4417E1C4460066B37D /* btn_close_normal.png */; };
 		6251EE4917E1C4460066B37D /* btn_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE4517E1C4460066B37D /* btn_close_normal@2x.png */; };
 		6251EE4A17E1C4460066B37D /* btn_close_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE4617E1C4460066B37D /* btn_close_selected.png */; };
 		6251EE4B17E1C4460066B37D /* btn_close_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6251EE4717E1C4460066B37D /* btn_close_selected@2x.png */; };
+		62B34B9B1827AE1000AD4061 /* DXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B34B9A1827AE1000AD4061 /* DXAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +40,12 @@
 		6251EE3317E1C33A0066B37D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6251EE3A17E1C3510066B37D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6251EE3B17E1C3510066B37D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		6251EE4117E1C3D70066B37D /* DXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAlertView.h; sourceTree = "<group>"; };
-		6251EE4217E1C3DD0066B37D /* DXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAlertView.m; sourceTree = "<group>"; };
 		6251EE4417E1C4460066B37D /* btn_close_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_normal.png; sourceTree = "<group>"; };
 		6251EE4517E1C4460066B37D /* btn_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_normal@2x.png"; sourceTree = "<group>"; };
 		6251EE4617E1C4460066B37D /* btn_close_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_selected.png; sourceTree = "<group>"; };
 		6251EE4717E1C4460066B37D /* btn_close_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_selected@2x.png"; sourceTree = "<group>"; };
+		62B34B991827AE1000AD4061 /* DXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAlertView.h; sourceTree = "<group>"; };
+		62B34B9A1827AE1000AD4061 /* DXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +119,12 @@
 		6251EE3D17E1C36E0066B37D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				62B34B991827AE1000AD4061 /* DXAlertView.h */,
+				62B34B9A1827AE1000AD4061 /* DXAlertView.m */,
 				6251EE4417E1C4460066B37D /* btn_close_normal.png */,
 				6251EE4517E1C4460066B37D /* btn_close_normal@2x.png */,
 				6251EE4617E1C4460066B37D /* btn_close_selected.png */,
 				6251EE4717E1C4460066B37D /* btn_close_selected@2x.png */,
-				6251EE4117E1C3D70066B37D /* DXAlertView.h */,
-				6251EE4217E1C3DD0066B37D /* DXAlertView.m */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				6251EE2A17E1C33A0066B37D /* main.m in Sources */,
 				6251EE2E17E1C33A0066B37D /* AppDelegate.m in Sources */,
 				6251EE3C17E1C3510066B37D /* MainViewController.m in Sources */,
-				6251EE4317E1C3DD0066B37D /* DXAlertView.m in Sources */,
+				62B34B9B1827AE1000AD4061 /* DXAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

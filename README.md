@@ -1,27 +1,18 @@
 DXAlertView
 ===========
 
-A path style alert view
+## Feature
 
-Feature:
+1. API is simple just like the UIAlertView.
+2. The callback function is simple to write.
+3. The animation is cool or in another saying----different from the triditional way.
 
-1. Simple API
+### How to use
 
-The API sample:
-
-	/*init method*/
-
-	//if you set the both the left and right button title, than the both leftblock and rightblock will work,
-
-	//If you want a single button, then you should set the leftbuttonTitle:nil.
+eg:
 
     DXAlertView *alert = [[DXAlertView alloc] initWithTitle:@"Congratulations" contentText:@"You have bought something" leftButtonTitle:@"Ok" rightButtonTitle:@"Fine"];
-
-    /*call this to show the alert on window*/
-
-    [alert showAlert];
-
-    /*The touch event call back*/
+    [alert show];
 
     alert.leftBlock = ^() {
         NSLog(@"left button clicked");
@@ -32,6 +23,7 @@ The API sample:
     alert.dismissBlock = ^() {
         NSLog(@"Do something interesting after dismiss block");
     };
+
 
 PicDemo:
 
