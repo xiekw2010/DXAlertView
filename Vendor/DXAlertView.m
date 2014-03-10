@@ -3,7 +3,7 @@
 //  MoreLikers
 //
 //  Created by xiekw on 13-9-9.
-//  Copyright (c) 2013年 周和生. All rights reserved.
+//  Copyright (c) 2013年 谢凯伟. All rights reserved.
 //
 
 #import "DXAlertView.h"
@@ -118,6 +118,8 @@
         xButton.frame = CGRectMake(kAlertWidth - 32, 0, 32, 32);
         [self addSubview:xButton];
         [xButton addTarget:self action:@selector(dismissAlert) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
     }
     return self;
 }
@@ -142,9 +144,9 @@
 
 - (void)show
 {
-    UIWindow *shareWindow = [UIApplication sharedApplication].keyWindow;
-    self.frame = CGRectMake((CGRectGetWidth(shareWindow.bounds) - kAlertWidth) * 0.5, - kAlertHeight - 30, kAlertWidth, kAlertHeight);
-    [shareWindow addSubview:self];
+    UIViewController *topVC = [self appRootViewController];
+    self.frame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, - kAlertHeight - 30, kAlertWidth, kAlertHeight);
+    [topVC.view addSubview:self];
 }
 
 - (void)dismissAlert
@@ -155,12 +157,23 @@
     }
 }
 
+- (UIViewController *)appRootViewController
+{
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *topVC = appRootVC;
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
+}
+
+
 - (void)removeFromSuperview
 {
     [self.backImageView removeFromSuperview];
     self.backImageView = nil;
-    UIWindow *shareWindow = [UIApplication sharedApplication].keyWindow;
-    CGRect afterFrame = CGRectMake((CGRectGetWidth(shareWindow.bounds) - kAlertWidth) * 0.5, CGRectGetHeight(shareWindow.bounds), kAlertWidth, kAlertHeight);
+    UIViewController *topVC = [self appRootViewController];
+    CGRect afterFrame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, CGRectGetHeight(topVC.view.bounds), kAlertWidth, kAlertHeight);
     
     [UIView animateWithDuration:0.35f delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.frame = afterFrame;
@@ -179,16 +192,17 @@
     if (newSuperview == nil) {
         return;
     }
-    UIWindow *shareWindow = [UIApplication sharedApplication].keyWindow;
-    
+    UIViewController *topVC = [self appRootViewController];
+
     if (!self.backImageView) {
-        self.backImageView = [[UIView alloc] initWithFrame:shareWindow.bounds];
+        self.backImageView = [[UIView alloc] initWithFrame:topVC.view.bounds];
+        self.backImageView.backgroundColor = [UIColor blackColor];
+        self.backImageView.alpha = 0.6f;
+        self.backImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     }
-    self.backImageView.backgroundColor = [UIColor blackColor];
-    self.backImageView.alpha = 0.6f;
-    [shareWindow addSubview:self.backImageView];
+    [topVC.view addSubview:self.backImageView];
     self.transform = CGAffineTransformMakeRotation(-M_1_PI / 2);
-    CGRect afterFrame = CGRectMake((CGRectGetWidth(shareWindow.bounds) - kAlertWidth) * 0.5, (CGRectGetHeight(shareWindow.bounds) - kAlertHeight) * 0.5, kAlertWidth, kAlertHeight);
+    CGRect afterFrame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, (CGRectGetHeight(topVC.view.bounds) - kAlertHeight) * 0.5, kAlertWidth, kAlertHeight);
     [UIView animateWithDuration:0.35f delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.transform = CGAffineTransformMakeRotation(0);
         self.frame = afterFrame;

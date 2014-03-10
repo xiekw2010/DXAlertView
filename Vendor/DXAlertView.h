@@ -3,7 +3,7 @@
 //  MoreLikers
 //
 //  Created by xiekw on 13-9-9.
-//  Copyright (c) 2013年 周和生. All rights reserved.
+//  Copyright (c) 2013年 谢凯伟. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
